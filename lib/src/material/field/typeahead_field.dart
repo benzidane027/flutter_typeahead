@@ -899,7 +899,7 @@ class _TypeAheadFieldState<T> extends State<TypeAheadField<T>> with WidgetsBindi
             onEditingComplete: widget.textFieldConfiguration.onEditingComplete,
             onTap: () {
               widget.textFieldConfiguration.onTap();
-              if (widget.textFieldConfiguration & tapCounter == 2) {
+              if (widget.textFieldConfiguration && tapCounter == 2) {
                 _effectiveFocusNode?.requestFocus();
               } else {
                 tapCounter++;
