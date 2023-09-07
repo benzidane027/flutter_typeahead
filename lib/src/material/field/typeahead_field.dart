@@ -892,18 +892,18 @@ class _TypeAheadFieldState<T> extends State<TypeAheadField<T>> with WidgetsBindi
             maxLengthEnforcement: widget.textFieldConfiguration.maxLengthEnforcement,
             obscureText: widget.textFieldConfiguration.obscureText,
             onChanged: widget.textFieldConfiguration.onChanged,
-            onSubmitted: () {
-              widget.textFieldConfiguration.onSubmitted();
+            onSubmitted: (str) {
               tapCounter = 0;
+              widget.textFieldConfiguration.onSubmitted!.call(str);
             },
             onEditingComplete: widget.textFieldConfiguration.onEditingComplete,
             onTap: () {
-              widget.textFieldConfiguration.onTap();
-              if (widget.textFieldConfiguration && tapCounter == 2) {
-                _effectiveFocusNode?.requestFocus();
-              } else {
-                tapCounter++;
-              }
+              widget.textFieldConfiguration.onTap!.call();
+              // if (widget.textFieldConfiguration.call() && tapCounter == 2) {
+              //   _effectiveFocusNode?.requestFocus();
+              // } else {
+              //   tapCounter++;
+              // }
             },
             onTapOutside: widget.textFieldConfiguration.onTapOutside,
             scrollPadding: widget.textFieldConfiguration.scrollPadding,
